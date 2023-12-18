@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
+const crudeOil = require('./routes/oil');
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // Routes
 app.use('/auth', authRoutes);
+app.use('/api', crudeOil)
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });

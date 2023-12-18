@@ -47,23 +47,6 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
-// Check if email is already registered
-router.get('/check-email/:email', async (req, res) => {
-  try {
-    const { email } = req.params;
-
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-        return res.status(200).json({ message: 'Email is registered' });
-      }
-  
-      res.status(404).json({ message: 'Email is not registered' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
   
   module.exports = router;
   
