@@ -9,7 +9,7 @@ const accessKey = 'TIZE4XDAI5D4C2RA';
 const symbol = 'TIZE4XDAI5D4C2RA';
 
 router.get('/oil-price', async (req, res) => {
-  console.log('Reached oil-price endpoint');
+  console.log('oil-price endpoint');
   try {
     const alphaVantageUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${accessKey}`;
 

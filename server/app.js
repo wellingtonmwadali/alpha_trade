@@ -1,5 +1,7 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
+const { reset } = require("nodemon");
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
 const crudeOil = require('./routes/oil');
@@ -8,6 +10,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 const MONGODB_URL = process.env.MONGODB_URL;
+
+//cors
+app.use(cors());
+
 
 // Middleware
 app.use(express.json());
