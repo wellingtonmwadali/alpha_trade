@@ -8,6 +8,7 @@ const naturalGas = require('./routes/gas');
 const brent = require('./routes/brent');
 const copper = require('./routes/copper');
 const aluminium = require('./routes/aluminium');
+const news = require('./routes/news');
 
 
 
@@ -30,6 +31,7 @@ app.use('/api', naturalGas);
 app.use('/api', brent);
 app.use('/api', copper);
 app.use('/api', aluminium);
+app.use('/api', news);
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
