@@ -1,8 +1,9 @@
 //header section
 
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai'; // Import React Icons
+import Commodities from '../pages/commodities';
 
 import logo from '../assets/logo.png';
 
@@ -14,7 +15,6 @@ const Header = () => {
   };
 
   return (
-    <Router>
       <div className="shadow-md font-medium p-4 flex justify-between items-center">
         {/* Logo with link to home */}
         <Link to="/">
@@ -76,7 +76,6 @@ const Header = () => {
           )}
         </div>
       </div>
-    </Router>
   );
 };
 
