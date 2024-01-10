@@ -26,7 +26,7 @@ const SignupForm = () => {
         <p className="text-white text-center font-bold text-xl mb-7">
           Already have an account?{' '}
           <Link to="/login" className="text-yellow-300">
-            login
+            Login
           </Link>
         </p>
         <form onSubmit={handleSubmit}>
@@ -92,6 +92,7 @@ const SignupForm = () => {
        />
        By registering, you agree to our{' '}
        <Link to="/terms-and-conditions" className="text-yellow-300">
+
          General Terms and conditions
        </Link>, and{' '}
        <Link to="/privacy-policy" className="text-yellow-300">
