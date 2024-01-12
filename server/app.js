@@ -40,6 +40,41 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
+//Schema
+const userSchema = mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  email: {
+    type: String,
+    unique: true,
+  },
+  password: String,
+  confirmPassword: String,
+});
+
+//model
+const userModel = mongoose.model("user", userSchema);
+
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
+
+// signup api
+app.post("/signup", async (req, res) => {
+  console.log(req.body);
+  //check if email is already in database or new email
+  const { email } = req.body;
+
+  const result = await userModel.findOne({ email: email }).exec();
+  console.log(result);
+  if (result) {
+    res.send({ message: "Email already registered", alert: false });
+  } else {
+    const data = userModel(req.body);
+    const save = await data.save();
+    res.send({ message: "Signed up successfully", alert: true });
+  }
+});
 
 // Start the server
 app.listen(PORT, () => {
