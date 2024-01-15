@@ -14,7 +14,13 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+  const [showCommoditiesSubMenu, setShowCommoditiesSubMenu] = useState(false);
 
+// Function to handle click on Commodities
+const handleCommoditiesClick = () => {
+  // Toggle the visibility of the Commodities sub-menu
+  setShowCommoditiesSubMenu((prev) => !prev);
+};
   return (
     <>
       <div className=" font-light p-3 flex justify-between items-center  border-b border-slate-200">
@@ -45,9 +51,31 @@ const Navbar = () => {
               <Link to="/" className="block border-b border-slate-200 p-5 hover:text-green-700">
                 Dashboard
               </Link>
-              <Link to="/commodities" className="block p-5 border-b border-slate-200 hover:text-green-700">
+              <div 
+              className="block p-5 border-b border-slate-200 hover:text-green-700"
+              onClick={handleCommoditiesClick}>
                 Commodities
-              </Link>
+              </div>
+                  {/* Sub-menu for Commodities */}
+      {showCommoditiesSubMenu && (
+        <ul className="ml-4">
+          <li>
+            <Link to="/commodities/crude-oil-wti">- Crude Oil(WTI)</Link>
+          </li>
+          <li>
+            <Link to="/commodities/crude-oil-brent">- Crude Oil(Brent)</Link>
+          </li>
+          <li>
+            <Link to="/commodities/copper">- Copper</Link>
+          </li>
+          <li>
+            <Link to="/commodities/aluminium">- Aluminium</Link>
+          </li>
+          <li>
+            <Link to="/commodities/natural-gas">- Natural Gas</Link>
+          </li>
+        </ul>
+      )}
               <Link to="/news" className="block border-b border-slate-200 p-5 hover:text-green-700">
                 Premium articles
               </Link>

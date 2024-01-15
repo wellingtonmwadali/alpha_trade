@@ -54,9 +54,6 @@ const Header = () => {
               <Link to="/" className="block border-b border-slate-200 p-5 hover:text-green-700">
                 Home
               </Link>
-              <Link to="/commodities" className="block p-5 border-b border-slate-200 hover:text-green-700">
-                Commodities
-              </Link>
               <Link to="/news" className="block border-b border-slate-200 p-5 hover:text-green-700">
                 News
               </Link>

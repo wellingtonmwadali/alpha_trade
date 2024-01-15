@@ -11,6 +11,13 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Dashboard from './pages/Dashboard';
 import Partners from './pages/partners';
+import Wti from './pages/wti';
+import Brent from './pages/brent';
+import Copper from './pages/copper';
+import Aluminium from './pages/aluminium';
+import Gas from './pages/gas';
+import PremiumArticles from './pages/PremiumArticles';
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -25,6 +32,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/partners" element={<Partners />} />
+        <Route path="/commodities/crude-oil-wti" element={<Wti />} />
+        <Route path="/commodities/crude-oil-brent" element={<Brent />} />
+        <Route path="/commodities/copper" element={<Copper />} />
+        <Route path="/commodities/aluminium" element={<Aluminium />} />
+        <Route path="/commodities/natural-gas" element={<Gas />} />
       </Routes>
     </Router>
   </React.StrictMode>,
