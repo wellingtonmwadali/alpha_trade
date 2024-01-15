@@ -1,8 +1,11 @@
 import React from 'react'
+import Header from '../components/header'
 
 const News = () => {
   return (
-    <div>N</div>
+    <div>
+      <Header/>
+    </div>
   )
 }
 

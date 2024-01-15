@@ -5,11 +5,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './pages/home';
-import Commodities from './pages/commodities';
 import News from './pages/news';
-import PremiumArticles from './pages/PremiumArticles';
+import About from './pages/about';
 import Login from './pages/login';
 import Signup from './pages/signup';
+import Dashboard from './pages/Dashboard';
+import Partners from './pages/partners';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -17,11 +19,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/commodities" element={<Commodities />} />
         <Route path="/news" element={<News />} />
-        <Route path="/premium-articles" element={<PremiumArticles />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/partners" element={<Partners />} />
       </Routes>
     </Router>
   </React.StrictMode>,

@@ -1,13 +1,14 @@
-//header section
+//navbar for the Dahboard
 
 import React, { useState } from 'react';
 import { Link} from 'react-router-dom';
-import { AiOutlineMenu } from 'react-icons/ai'; // Import React Icons
+import { AiOutlineMenu } from 'react-icons/ai';
+import { MdAccountCircle } from "react-icons/md";
 
 
 import logo from '../assets/logo.png';
 
-const Header = () => {
+const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -15,30 +16,20 @@ const Header = () => {
   };
 
   return (
-      <div className="shadow-md font-light p-4 flex justify-between items-center">
+    <>
+      <div className=" font-light p-3 flex justify-between items-center  border-b border-slate-200">
         {/* Logo with link to home */}
         <Link to="/">
           <img src={logo} alt="Logo" className="h-12" />
         </Link>
-
+        <div className="border-r border-slate-300 h-14  w-2/3"></div>
+        <div className='md:flex hidden text-4xl'><MdAccountCircle/></div>
         {/* Navigation Menu */}
-        <nav className="hidden md:flex space-x-8 gap-10 ">
+        <nav className="hidden md:flex mr-48">
           <Link to="/" className="">
-            Home
+            Account
           </Link>
-          <Link to="/news" className="">
-            News
-          </Link>
-          <Link to="/about" className="">
-            About
-          </Link>
-          <Link to="/login">Login</Link>
-          <Link
-            to="/signup"
-            className="bg-slate-200 hover:bg-slate-300 rounded-full w-24 h-8 text-center font-normal"
-          >
-            Sign Up
-          </Link>
+         
         </nav>
 
         {/* Mobile Menu Icon (Toggle visibility of the menu) */}
@@ -52,29 +43,26 @@ const Header = () => {
           {isMobileMenuOpen && (
             <div className="absolute top-20 left-1 right-1  p-9 space-y-5 ">
               <Link to="/" className="block border-b border-slate-200 p-5 hover:text-green-700">
-                Home
+                Dashboard
               </Link>
               <Link to="/commodities" className="block p-5 border-b border-slate-200 hover:text-green-700">
                 Commodities
               </Link>
               <Link to="/news" className="block border-b border-slate-200 p-5 hover:text-green-700">
-                News
+                Premium articles
               </Link>
               <Link to="/about" className="block border-b border-slate-200 p-5 hover:text-green-700">
-                About
+                Partners
               </Link>
               <Link to="/login" className="block border-b border-slate-200 p-5 hover:text-green-700">
-                Login
-              </Link>
-              <Link to="/signup" className="block p-3 text-center bg-slate-200 hover:bg-slate-300 rounded-full  ">
-                Sign Up
+                Account
               </Link>
             </div>
           )}
         </div>
       </div>
+      </>
   );
 };
 
-export default Header;
-
+export default Navbar;

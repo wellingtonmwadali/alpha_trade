@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaTimes, FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 import  toast, {Toaster} from 'react-hot-toast';
-import Header from '../components/header'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);

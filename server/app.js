@@ -76,6 +76,26 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+//login endpoint
+app.post("/login", async (req, res) => {
+  const { email } = req.body;
+  const result = await userModel.findOne({ email: email }).exec();
+  if (result) {
+    const dataSend = {
+      firstName: result.firstName,
+      lastName: result.lastName,
+      email: result.email,
+    };
+    console.log(dataSend);
+    res.send({ message: "login is successful", alert: true, data: dataSend });
+  } else {
+    res.send({
+      message: "Email is not registered/Please signup",
+      alert: false,
+    });
+  }
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

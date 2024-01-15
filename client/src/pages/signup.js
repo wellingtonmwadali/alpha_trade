@@ -49,7 +49,7 @@ const Signup = () => {
               'Content-Type': 'application/json',
             },
           });
-  
+          console.log(data)//check user information 
           const dataRes = response.data;
           console.log(dataRes);
           toast.success(dataRes.message,{
@@ -73,7 +73,8 @@ const Signup = () => {
   
 
   return (
-    <><Toaster/>
+    <>
+    <Toaster/>
     <div className='md:flex  md:flex-row h-screen w-full'>
       <FaTimes
         className="absolute top-4 right-4 cursor-pointer text-white text-2xl "
