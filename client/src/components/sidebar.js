@@ -54,9 +54,9 @@ const Sidebar = () => {
         
           <>
             <li className="mb-2">
-              <Link to="/premium-news" className="transition duration-300 transform translate-y-2">
+              <Link to="/premium-articles" className="transition duration-300 transform translate-y-2">
                 <BsNewspaper className="inline mr-2" />
-                Premium News
+                Premium Articles
               </Link>
             </li>
             <li className="mb-2">

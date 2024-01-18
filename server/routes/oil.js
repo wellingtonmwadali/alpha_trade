@@ -7,7 +7,7 @@ const router = express.Router();
 const apiKey = 'TIZE4XDAI5D4C2RA';
 
 //route
-router.get('/oil-price', async (req, res) => {
+router.get('/crude-oil-wti', async (req, res) => {
   console.log('oil-price endpoint');
   try {
     const alphaVantageUrl = `https://www.alphavantage.co/query?function=WTI&interval=monthly&apikey=${apiKey}`;
@@ -15,10 +15,11 @@ router.get('/oil-price', async (req, res) => {
     const response = await axios.get(alphaVantageUrl);
     const historicalPrices = response.data.data;
 
-    const formattedData = historicalPrices.map(price => ({
+    const formattedData = historicalPrices.map((price, index) => ({
       Title: `Crude Oil(WTI) Price`,
       Date: new Date(price.date).toDateString(),
       Price: price.value,
+      PriceTrend: index > 0 ? (price.value > historicalPrices[index - 1].value ? 'Increase' : 'Decrease') : 'neutral',
     }));
 
     // Sort data by date in descending order (from latest to oldest)

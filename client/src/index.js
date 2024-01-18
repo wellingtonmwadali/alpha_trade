@@ -9,14 +9,14 @@ import News from './pages/news';
 import About from './pages/about';
 import Login from './pages/login';
 import Signup from './pages/signup';
-import Dashboard from './pages/Dashboard';
-import Partners from './pages/partners';
-import Wti from './pages/wti';
-import Brent from './pages/brent';
-import Copper from './pages/copper';
-import Aluminium from './pages/aluminium';
-import Gas from './pages/gas';
-import PremiumArticles from './pages/PremiumArticles';
+import Dashboard from './pages/userAccount/Dashboard';
+import Partners from './pages/userAccount/partners';
+import Wti from './pages/commodities/wti';
+import Brent from './pages/commodities/brent';
+import Copper from './pages/commodities/copper';
+import Aluminium from './pages/commodities/aluminium';
+import Gas from './pages/commodities/gas';
+import PremiumArticles from './pages/userAccount/PremiumArticles';
 
 
 
@@ -37,6 +37,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/commodities/copper" element={<Copper />} />
         <Route path="/commodities/aluminium" element={<Aluminium />} />
         <Route path="/commodities/natural-gas" element={<Gas />} />
+        <Route path="/premium-articles" element={<PremiumArticles />} />
       </Routes>
     </Router>
   </React.StrictMode>,

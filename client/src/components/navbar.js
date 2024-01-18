@@ -47,7 +47,7 @@ const handleCommoditiesClick = () => {
           {/* Mobile Menu Content */}
           {/* This part will be visible when the button is clicked */}
           {isMobileMenuOpen && (
-            <div className="absolute top-20 left-1 right-1  p-9 space-y-5 ">
+            <div className="absolute top-20 left-1 right-1  p-9 space-y-5 bg-white ">
               <Link to="/" className="block border-b border-slate-200 p-5 hover:text-green-700">
                 Dashboard
               </Link>
@@ -58,7 +58,7 @@ const handleCommoditiesClick = () => {
               </div>
                   {/* Sub-menu for Commodities */}
       {showCommoditiesSubMenu && (
-        <ul className="ml-4">
+        <ul className="ml-4 ">
           <li>
             <Link to="/commodities/crude-oil-wti">- Crude Oil(WTI)</Link>
           </li>
