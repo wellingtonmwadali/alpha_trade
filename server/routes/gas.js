@@ -15,10 +15,11 @@ router.get('/natural-gas', async (req, res) => {
     const response = await axios.get(alphaVantageUrl);
     const historicalPrices = response.data.data;
 
-    const formattedData = historicalPrices.map(price => ({
+    const formattedData = historicalPrices.map((price, index) => ({
       Title: `Natural Gas Price`,
       Date: new Date(price.date).toDateString(),
       Price: price.value,
+      PriceTrend: index > 0 ? (price.value > historicalPrices[index - 1].value ? 'Increase' : 'Decrease') : 'Neutral',
     }));
     
 

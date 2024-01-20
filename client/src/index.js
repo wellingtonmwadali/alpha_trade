@@ -12,7 +12,7 @@ import Signup from './pages/signup';
 import Dashboard from './pages/userAccount/Dashboard';
 import Partners from './pages/userAccount/partners';
 import Wti from './pages/commodities/wti';
-import Brent from './pages/commodities/brent';
+import CrudeBrent from './pages/commodities/brent';
 import Copper from './pages/commodities/copper';
 import Aluminium from './pages/commodities/aluminium';
 import Gas from './pages/commodities/gas';
@@ -33,7 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/partners" element={<Partners />} />
         <Route path="/commodities/crude-oil-wti" element={<Wti />} />
-        <Route path="/commodities/crude-oil-brent" element={<Brent />} />
+        <Route path="/commodities/crude-oil-brent" element={<CrudeBrent />} />
         <Route path="/commodities/copper" element={<Copper />} />
         <Route path="/commodities/aluminium" element={<Aluminium />} />
         <Route path="/commodities/natural-gas" element={<Gas />} />

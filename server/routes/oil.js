@@ -1,29 +1,42 @@
 //This file gets the Crude Oil(WTI) end point from Alpha Vintage Key
-const express = require('express');
-const axios = require('axios');
+const express = require("express");
+const axios = require("axios");
 const router = express.Router();
 
 // Alpha Vantage Crude Oil(WTI) API key
-const apiKey = 'TIZE4XDAI5D4C2RA';
+const apiKey = "TIZE4XDAI5D4C2RA";
 
 //route
-router.get('/crude-oil-wti', async (req, res) => {
-  console.log('oil-price endpoint');
+router.get("/crude-oil-wti", async (req, res) => {
+  console.log("oil-price endpoint");
   try {
     const alphaVantageUrl = `https://www.alphavantage.co/query?function=WTI&interval=monthly&apikey=${apiKey}`;
 
     const response = await axios.get(alphaVantageUrl);
     const historicalPrices = response.data.data;
 
-    const formattedData = historicalPrices.map((price, index) => ({
-      Title: `Crude Oil(WTI) Price`,
-      Date: new Date(price.date).toDateString(),
-      Price: price.value,
-      PriceTrend: index > 0 ? (price.value > historicalPrices[index - 1].value ? 'Increase' : 'Decrease') : 'neutral',
-    }));
+  const formattedData = historicalPrices.map((price, index) => {
+      const currentPrice = price.value;
+      const previousPrice = index > 0 ? historicalPrices[index - 1].value : currentPrice;
+      const priceMargin = parseFloat((currentPrice - previousPrice));
+      const priceTrend = index > 0 ? (priceMargin > 0 ? "Increase" : "Decrease") : "Neutral";
+      const priceColor = priceMargin < 0 ? "red" : priceMargin > 0 ? "green" : "black";
+
+      return {
+        Title: `Crude Oil(WTI) Price`,
+        Date: new Date(price.date).toDateString(),
+        Price: parseFloat(currentPrice),
+        Unit: "USD/BBL",
+        PriceTrend: priceTrend,
+        PriceMargin: priceMargin,
+        PriceColor: priceColor,
+      };
+    });
 
     // Sort data by date in descending order (from latest to oldest)
-    const sortedData = formattedData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const sortedData = formattedData.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
 
     res.json(sortedData);
   } catch (error) {
@@ -33,18 +46,9 @@ router.get('/crude-oil-wti', async (req, res) => {
     if (error.response && error.response.data) {
       res.status(error.response.status).json({ error: error.response.data });
     } else {
-      res.status(500).json({ error: 'Internal server error' });
+      res.status(500).json({ error: "Internal server error" });
     }
   }
 });
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
