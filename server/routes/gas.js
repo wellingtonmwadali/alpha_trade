@@ -15,12 +15,24 @@ router.get('/natural-gas', async (req, res) => {
     const response = await axios.get(alphaVantageUrl);
     const historicalPrices = response.data.data;
 
-    const formattedData = historicalPrices.map((price, index) => ({
-      Title: `Natural Gas Price`,
-      Date: new Date(price.date).toDateString(),
-      Price: price.value,
-      PriceTrend: index > 0 ? (price.value > historicalPrices[index - 1].value ? 'Increase' : 'Decrease') : 'Neutral',
-    }));
+    
+    const formattedData = historicalPrices.map((price, index) => {
+      const currentPrice = price.value;
+      const previousPrice = index > 0 ? historicalPrices[index - 1].value : currentPrice;
+      const priceMargin = parseFloat(((currentPrice - previousPrice)/ previousPrice) * 100);
+      const priceTrend = index > 0 ? (priceMargin > 0 ? "Increase" : "Decrease") : "Neutral";
+      
+
+      return {
+        Title: `Natural Gas Price`,
+        Date: new Date(price.date).toDateString(),
+        Price: parseFloat(currentPrice),
+        Unit: "USD",
+        PriceTrend: priceTrend,
+        PriceMargin: priceMargin.toFixed(2) + '%',
+       
+      };
+    });
     
 
     // Sort data by date in descending order (from latest to oldest)

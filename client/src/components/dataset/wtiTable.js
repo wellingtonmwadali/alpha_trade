@@ -89,13 +89,7 @@ const CrudeOilTable = () => {
                 {entry.PriceTrend}
               </td>
               <td
-                className={`py-2  border-b border border-blue-400 text-center ${
-                  entry.priceColor === "red"
-                    ? "text-red-400"
-                    : entry.priceColor === "green"
-                    ? "text-green-400"
-                    : "text-black"
-                }`}
+                className={`py-2  border-b border border-blue-400 text-center `}
               >
                 {entry.PriceMargin}
               </td>

@@ -5,6 +5,7 @@ const News = () => {
   return (
     <div>
       <Header/>
+      <div>jjjjjjjj</div>
     </div>
   )
 }

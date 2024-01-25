@@ -57,10 +57,12 @@ const CopperTable = () => {
 
       <table className="min-w-full bg-white border border-gray-300">
         <thead>
-          <tr>
+        <tr>
             <th className="py-2  border-b border border-blue-400">Date</th>
-            <th className="py-2  border-b border border-blue-400">Price($)</th>
-            <th className="py-2  border-b border border-blue-400">Price Trend</th>
+            <th className="py-2  border-b border border-blue-400">Price</th>
+            <th className="py-2  border-b border border-blue-400">Unit</th>
+            <th className="py-2  border-b border border-blue-400">Trend</th>
+            <th className="py-2  border-b border border-blue-400">Margin</th>
           </tr>
         </thead>
         <tbody>
@@ -74,6 +76,11 @@ const CopperTable = () => {
                 }`}
               >
                 {entry.PriceTrend}
+              </td>
+              <td
+                className={`py-2  border-b border border-blue-400 text-center `}
+              >
+                {entry.PriceMargin}
               </td>
             </tr>
           ))}

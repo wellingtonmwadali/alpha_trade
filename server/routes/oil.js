@@ -18,21 +18,31 @@ router.get("/crude-oil-wti", async (req, res) => {
   const formattedData = historicalPrices.map((price, index) => {
       const currentPrice = price.value;
       const previousPrice = index > 0 ? historicalPrices[index - 1].value : currentPrice;
-      const priceMargin = parseFloat((currentPrice - previousPrice));
+      const priceChange = parseFloat(currentPrice - previousPrice)
+      const priceMargin = parseFloat(((currentPrice - previousPrice)/ previousPrice) * 100);
       const priceTrend = index > 0 ? (priceMargin > 0 ? "Increase" : "Decrease") : "Neutral";
-      const priceColor = priceMargin < 0 ? "red" : priceMargin > 0 ? "green" : "black";
+      
 
       return {
         Title: `Crude Oil(WTI) Price`,
         Date: new Date(price.date).toDateString(),
         Price: parseFloat(currentPrice),
         Unit: "USD/BBL",
+        priceChange : priceChange,
         PriceTrend: priceTrend,
-        PriceMargin: priceMargin,
-        PriceColor: priceColor,
+        PriceMargin: priceMargin.toFixed(2) + '%',
+        //Highest: parseFloat(priceHigh),
+        //Lowest: parseFloat(priceLow),
+        collectionPeriod: "1976 to 2023",
+        Frequency: "Monthly",
+
+       
       };
     });
-
+     // Calculate highest and lowest prices within the entire period
+     //const priceHigh = Math.max(...formattedData.map((entry) => entry.Highest));
+     //const priceLow = Math.min(...formattedData.map((entry) => entry.Lowest));
+ 
     // Sort data by date in descending order (from latest to oldest)
     const sortedData = formattedData.sort(
       (a, b) => new Date(b.date) - new Date(a.date)
