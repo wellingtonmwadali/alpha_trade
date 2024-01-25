@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const Loader = () => (
+  <div className="flex justify-center items-center h-full">
+    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-500"></div>
+  </div>
+);
+
+
 const GasTable = () => {
   const [gasData, setGasData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showFullTable, setShowFullTable] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:8080/api/natural-gas');
         setGasData(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+        setIsLoading(false);
       }
     };
 
@@ -54,7 +64,9 @@ const GasTable = () => {
           {showFullTable ? 'View Past 12 Months' : 'View Full Table'}
         </button>
       </div>
-
+      {isLoading ? (
+        <Loader /> // Display loader while data is loading
+      ) : (
       <table className="min-w-full bg-white border border-gray-300">
         <thead>
         <tr>
@@ -86,6 +98,7 @@ const GasTable = () => {
           ))}
         </tbody>
       </table>
+      )}
     </div>
   );
 };
