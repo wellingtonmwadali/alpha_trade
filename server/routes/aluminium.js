@@ -15,12 +15,35 @@ router.get('/aluminium', async (req, res) => {
     const response = await axios.get(alphaVantageUrl);
     const historicalPrices = response.data.data;
 
-    const formattedData = historicalPrices.map((price, index) => ({
-      Title: `Aluminium Price`,
-      Date: new Date(price.date).toDateString(),
-      Price: price.value,
-      PriceTrend: index > 0 ? (price.value > historicalPrices[index - 1].value ? 'Increase' : 'Decrease') : 'Neutral',
-    }));
+        // Calculate highest and lowest prices within the entire period
+        const priceHigh = Math.max(...historicalPrices.map((price) => price.value));
+        const priceLow = Math.min(...historicalPrices.map((price) => price.value));
+    
+   
+     const formattedData = historicalPrices.map((price, index) => {
+         const currentPrice = price.value;
+         const previousPrice = index > 0 ? historicalPrices[index - 1].value : currentPrice;
+         const priceChange = parseFloat(currentPrice - previousPrice)
+         const priceMargin = parseFloat(((currentPrice - previousPrice)/ previousPrice) * 100);
+         const priceTrend = index > 0 ? (priceMargin > 0 ? "Increase" : "Decrease") : "Neutral";
+         
+   
+         return {
+           Title: `Aluminium Price`,
+           Date: new Date(price.date).toDateString(),
+           Price: parseFloat(currentPrice),
+           Unit: "USD",
+           priceChange : priceChange,
+           PriceTrend: priceTrend,
+           PriceMargin: priceMargin.toFixed(2) + '%',
+           Highest: parseFloat(priceHigh),
+           Lowest: parseFloat(priceLow),
+           collectionPeriod: "1976 to 2023",
+           Frequency: "Monthly",
+   
+          
+         };
+       });
     
 
     // Sort data by date in descending order (from latest to oldest)

@@ -79,7 +79,7 @@ const CrudeOilTable = () => {
         <tbody>
           {filteredData.map((entry) => (
             <tr key={entry.Date}>
-              <td className="py-2 px-2 border-b border border-blue-400 ">
+              <td className="py-2 px-2 border-b border border-blue-400 font-semibold">
                 {entry.Date}
               </td>
               <td className="py-2  border-b border border-blue-400 text-center">

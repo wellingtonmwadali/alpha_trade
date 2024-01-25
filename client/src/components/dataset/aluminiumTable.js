@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Loader = () => (
   <div className="flex justify-center items-center h-full">
-    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-500"></div>
+    <div className="animate-spin rounded-full h-20 w-16 border-t-2 border-blue-500"></div>
   </div>
 );
 
@@ -80,11 +80,22 @@ const AluminiumTable = () => {
         <tbody>
           {filteredData.map((entry) => (
             <tr key={entry.Date}>
-              <td className="py-2 px-4 border-b border border-blue-400 ">{entry.Date}</td>
-              <td className="py-2 px-12 border-b border border-blue-400 text-center">{entry.Price}</td>
+              <td className="py-2 px-2 border-b border border-blue-400 font-semibold ">
+                {entry.Date}
+              </td>
+              <td className="py-2  border-b border border-blue-400 text-center">
+                {entry.Price}
+              </td>
+              <td className="py-2  border-b border border-blue-400 text-center">
+                {entry.Unit}
+              </td>
               <td
-                className={`py-2 px-12 border-b border border-blue-400 text-center ${
-                  entry.PriceTrend === 'Increase' ? 'text-green-500' : entry.PriceTrend === 'Decrease' ? 'text-red-500' : 'text-black'
+                className={`py-2  border-b border border-blue-400 text-center ${
+                  entry.PriceTrend === "Increase"
+                    ? "text-green-500"
+                    : entry.PriceTrend === "Decrease"
+                    ? "text-red-500"
+                    : "text-black"
                 }`}
               >
                 {entry.PriceTrend}

@@ -6,6 +6,11 @@ import "slick-carousel/slick/slick-theme.css";
 import commoditiesImages from "../assets/commodity-images.jpg";
 import commodityOutlook from "../assets/commodity-outlook.jpg";
 import crudeOilImage from "../assets/crude-oil-image.webp";
+import CrudeOilWti from "../components/landingPage/crudeWti";
+import CrudeOilBrent from "../components/landingPage/crudeBrent";
+import Copper from "../components/landingPage/copper";
+import NaturalGas from "../components/landingPage/naturalGas";
+import Aluminium from "../components/landingPage/aluminium";
 
 const Home = () => {
   const sliderSettings = {
@@ -128,6 +133,16 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <div className="w-full md:flex">
+          <div className="md:w-2/3">
+          <CrudeOilWti/>
+          <CrudeOilBrent/>
+          <NaturalGas/> 
+          <Copper/>
+          <Aluminium/>
+          </div>
+        </div>
+     
       </div>
     </>
   );

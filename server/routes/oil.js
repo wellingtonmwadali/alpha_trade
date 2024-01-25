@@ -15,6 +15,11 @@ router.get("/crude-oil-wti", async (req, res) => {
     const response = await axios.get(alphaVantageUrl);
     const historicalPrices = response.data.data;
 
+     // Calculate highest and lowest prices within the entire period
+     const priceHigh = Math.max(...historicalPrices.map((price) => price.value));
+     const priceLow = Math.min(...historicalPrices.map((price) => price.value));
+ 
+
   const formattedData = historicalPrices.map((price, index) => {
       const currentPrice = price.value;
       const previousPrice = index > 0 ? historicalPrices[index - 1].value : currentPrice;
@@ -27,22 +32,20 @@ router.get("/crude-oil-wti", async (req, res) => {
         Title: `Crude Oil(WTI) Price`,
         Date: new Date(price.date).toDateString(),
         Price: parseFloat(currentPrice),
+        Previous: previousPrice,
         Unit: "USD/BBL",
-        priceChange : priceChange,
+        priceChange : priceChange.toFixed(2),
         PriceTrend: priceTrend,
         PriceMargin: priceMargin.toFixed(2) + '%',
-        Highest: parseFloat(priceHigh),
-        Lowest: parseFloat(priceLow),
+        Highest: parseFloat(priceHigh).toFixed(2),
+        Lowest: parseFloat(priceLow).toFixed(),
         collectionPeriod: "1976 to 2023",
         Frequency: "Monthly",
 
        
       };
     });
-      //Calculate highest and lowest prices within the entire period
-     const priceHigh = Math.max(...formattedData.map((entry) => entry.Highest));
-     const priceLow = Math.min(...formattedData.map((entry) => entry.Lowest));
- 
+    
     // Sort data by date in descending order (from latest to oldest)
     const sortedData = formattedData.sort(
       (a, b) => new Date(b.date) - new Date(a.date)
