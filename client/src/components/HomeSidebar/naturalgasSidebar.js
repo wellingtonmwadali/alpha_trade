@@ -35,19 +35,19 @@ const NaturalGasSidebar = () => {
         </div>
 
         <div className="mt-2">
-          {isLoading ? (
-            <Loader /> // Display loader while data is loading
-          ) : (
-            <table className="w-full bg-white border border-gray-300">
-              <thead>
-                <tr>
-                  <th className="py-1 border-b border-gray-300">Actual</th>
-                  <th className="py-1 border-b border-gray-300">Previous</th>
-                  <th className="py-1 border-b border-gray-300">Margin</th>
-                </tr>
-              </thead>
+          <table className="w-full bg-white border border-gray-300">
+            <thead>
+              <tr>
+                <th className="py-1 border-b border-gray-300">Actual</th>
+                <th className="py-1 border-b border-gray-300">Previous</th>
+                <th className="py-1 border-b border-gray-300">Margin</th>
+              </tr>
+            </thead>
+            {isLoading ? (
+              <Loader /> // Display loader while data is loading
+            ) : (
               <tbody>
-                {crudeOilData.slice(0,6).map((entry) => (
+                {crudeOilData.slice(0, 6).map((entry) => (
                   <tr key={entry.Date}>
                     <td className="py-1 px-2 border-b border-gray-300">
                       {entry.Price}
@@ -61,8 +61,8 @@ const NaturalGasSidebar = () => {
                   </tr>
                 ))}
               </tbody>
-            </table>
-          )}
+            )}
+          </table>
         </div>
       </div>
     </div>

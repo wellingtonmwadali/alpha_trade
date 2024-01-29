@@ -45,9 +45,7 @@ useEffect(() => {
         </div>
 
         <div className="mt-8">
-        {isLoading ? (
-        <Loader /> // Display loader while data is loading
-      ) : (
+     
           <table className="w-full bg-white border border-gray-300">
             <thead>
               <tr>
@@ -60,6 +58,9 @@ useEffect(() => {
                 <th className="py-2 border-b border-gray-300">Frequency</th>
               </tr>
             </thead>
+            {isLoading ? (
+        <Loader /> // Display loader while data is loading
+      ) : (
             <tbody>
               {crudeOilData.slice(0, 1).map((entry) => (
                 <tr key={entry.Date}>
@@ -87,8 +88,9 @@ useEffect(() => {
                 </tr>
               ))}
             </tbody>
+               )}
           </table>
-      )}
+   
         </div>
       </div>
     </div>

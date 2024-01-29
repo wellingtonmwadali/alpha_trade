@@ -35,9 +35,7 @@ const WtiSidebar = () => {
         </div>
 
         <div className="mt-2">
-          {isLoading ? (
-            <Loader /> // Display loader while data is loading
-          ) : (
+       
             <table className="w-full bg-white border border-gray-300">
               <thead>
                 <tr>
@@ -46,6 +44,9 @@ const WtiSidebar = () => {
                   <th className="py-1 border-b border-gray-300">Margin</th>
                 </tr>
               </thead>
+              {isLoading ? (
+            <Loader /> // Display loader while data is loading
+          ) : (
               <tbody>
                 {crudeOilData.slice(0,6).map((entry) => (
                   <tr key={entry.Date}>
@@ -61,8 +62,9 @@ const WtiSidebar = () => {
                   </tr>
                 ))}
               </tbody>
+                 )}
             </table>
-          )}
+       
         </div>
       </div>
     </div>

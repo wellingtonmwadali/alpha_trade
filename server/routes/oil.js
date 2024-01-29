@@ -31,14 +31,14 @@ router.get("/crude-oil-wti", async (req, res) => {
       return {
         Title: `Crude Oil(WTI) Price`,
         Date: new Date(price.date).toDateString(),
-        Price: parseFloat(currentPrice),
-        Previous: previousPrice,
+        Price: parseFloat(currentPrice).toFixed(2),
+        Previous: parseFloat(previousPrice).toFixed(2),
         Unit: "USD/BBL",
         priceChange : priceChange.toFixed(2),
         PriceTrend: priceTrend,
         PriceMargin: priceMargin.toFixed(2) + '%',
         Highest: parseFloat(priceHigh).toFixed(2),
-        Lowest: parseFloat(priceLow).toFixed(),
+        Lowest: parseFloat(priceLow).toFixed(2),
         collectionPeriod: "1976 to 2023",
         Frequency: "Monthly",
 

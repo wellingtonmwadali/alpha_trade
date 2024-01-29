@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
- 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 const Loader = () => (
   <div className="flex justify-center items-center h-full">
     <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-500"></div>
@@ -11,20 +11,22 @@ const CrudeOilWti = () => {
   const [crudeOilData, setCrudeOilData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/api/crude-oil-wti');
-      setCrudeOilData(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setIsLoading(false);
-    }
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/crude-oil-wti"
+        );
+        setCrudeOilData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      }
+    };
 
-  fetchData();
-}, []);
+    fetchData();
+  }, []);
   return (
     <div>
       <div className="w-full mx-auto p-2 border border-gray-300 my-8 ">
@@ -34,23 +36,20 @@ useEffect(() => {
 
         <div>
           <p className="font-normal">
-            Crude Oil (WTI)
-            takes center stage as a pivotal benchmark in the global oil market.
-            Originating from West Texas, its influence extends
-            far beyond its regional boundaries. Unlike Brent Crude, sourced from
-            the North Sea, the production from Europe, Africa, and the Middle
-            East often aligns its pricing relative to WTI. Trading Economics
-            provides a valuable window into this dynamic landscape, displaying
-            WTI prices derived from over-the-counter (OTC) and contract for
-            difference (CFD) financial instruments. It's essential to view these
-            market prices as reference points only,rather than a basis for your trades.
+            Crude Oil (WTI) takes center stage as a pivotal benchmark in the
+            global oil market. Originating from West Texas, its influence
+            extends far beyond its regional boundaries. Unlike Brent Crude,
+            sourced from the North Sea, the production from Europe, Africa, and
+            the Middle East often aligns its pricing relative to WTI. Trading
+            Economics provides a valuable window into this dynamic landscape,
+            displaying WTI prices derived from over-the-counter (OTC) and
+            contract for difference (CFD) financial instruments. It's essential
+            to view these market prices as reference points only,rather than a
+            basis for your trades.
           </p>
         </div>
 
         <div className="mt-8">
-        {isLoading ? (
-        <Loader /> // Display loader while data is loading
-      ) : (
           <table className="w-full bg-white border border-gray-300">
             <thead>
               <tr>
@@ -63,39 +62,42 @@ useEffect(() => {
                 <th className="py-2 border-b border-gray-300">Frequency</th>
               </tr>
             </thead>
-            <tbody>
-              {crudeOilData.slice(0, 1).map((entry) => (
-                <tr key={entry.Date}>
-                  <td className="py-2 px-4 border-b border-gray-300">
-                    {entry.Price}
-                  </td>
-                  <td className="py-2 px-4 border-b border-gray-300">
-                    {entry.Previous}
-                  </td>
-                  <td className="py-2 px-4 border-b border-gray-300">
-                    {entry.priceChange}
-                  </td>
-                  <td className="py-2 px-4 border-b border-gray-300">
-                    {entry.Highest}
-                  </td>
-                  <td className="py-2 px-4 border-b border-gray-300">
-                    {entry.Lowest}
-                  </td>
-                  <td className="py-2 px-4 border-b border-gray-300">
-                    {entry.Unit}
-                  </td>
-                  <td className="py-2 px-4 border-b border-gray-300">
-                    {entry.collectionPeriod}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+            {isLoading ? (
+              <Loader /> // Display loader while data is loading
+            ) : (
+              <tbody>
+                {crudeOilData.slice(0, 1).map((entry) => (
+                  <tr key={entry.Date}>
+                    <td className="py-2 px-4 border-b border-gray-300">
+                      {entry.Price}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-300">
+                      {entry.Previous}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-300">
+                      {entry.priceChange}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-300">
+                      {entry.Highest}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-300">
+                      {entry.Lowest}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-300">
+                      {entry.Unit}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-300">
+                      {entry.collectionPeriod}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            )}
           </table>
-      )}
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default CrudeOilWti
+export default CrudeOilWti;
