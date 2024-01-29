@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/navbar'
-import Sidebar from '../../components/sidebar'
+import Sidebar from '../../components/Dashboard/sidebar'
 import GasTable from '../../components/dataset/gasTable'
 import naturalgas from '../../assets/naturalgas.jpeg'
 

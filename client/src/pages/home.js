@@ -11,6 +11,13 @@ import CrudeOilBrent from "../components/landingPage/crudeBrent";
 import Copper from "../components/landingPage/copper";
 import NaturalGas from "../components/landingPage/naturalGas";
 import Aluminium from "../components/landingPage/aluminium";
+import WtiSidebar from "../components/HomeSidebar/wtisidebar";
+import BrentSidebar from "../components/HomeSidebar/brentsidebar";
+import NaturalGasSidebar from "../components/HomeSidebar/naturalgasSidebar";
+import CopperSidebar from "../components/HomeSidebar/copperSidebar";
+import AluminiumSidebar from "../components/HomeSidebar/aluminiumSidebar";
+import Newsletter from "../components/newsletter";
+
 
 const Home = () => {
   const sliderSettings = {
@@ -135,14 +142,33 @@ const Home = () => {
         </div>
         <div className="w-full md:flex">
           <div className="md:w-2/3">
-          <CrudeOilWti/>
-          <CrudeOilBrent/>
-          <NaturalGas/> 
-          <Copper/>
-          <Aluminium/>
+            <CrudeOilWti />
+            <CrudeOilBrent />
+            <NaturalGas />
+            <Copper />
+            <Aluminium />
+          </div>
+          <div className="md:w-1/3">
+       <div className="mt-4 p-4"><WtiSidebar /></div>
+            <div className="mt-2 p-4">
+              {" "}
+              <BrentSidebar />
+            </div>
+            <div className="mt-2 p-4">
+              {" "}
+              <NaturalGasSidebar />
+            </div>
+            <div className="mt-2 p-4">
+              {" "}
+              <CopperSidebar />
+            </div>
+            <div className="mt-2 p-4">
+              {" "}
+              <AluminiumSidebar />
+            </div>
+            <div className="mt-4 p-4"><Newsletter/></div>
           </div>
         </div>
-     
       </div>
     </>
   );

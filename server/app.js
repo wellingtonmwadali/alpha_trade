@@ -10,16 +10,13 @@ const copper = require('./routes/copper');
 const aluminium = require('./routes/aluminium');
 const news = require('./routes/news');
 
-
-
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 const MONGODB_URL = process.env.MONGODB_URL;
 
-//cors
+// cors
 app.use(cors());
-
 
 // Middleware
 app.use(express.json());
@@ -40,7 +37,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
-//Schema
+
+// Schema
 const userSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
@@ -52,32 +50,43 @@ const userSchema = mongoose.Schema({
   confirmPassword: String,
 });
 
-//model
-const userModel = mongoose.model("user", userSchema);
+// Model
+const userModel = mongoose.model('user', userSchema);
 
-app.get("/", (req, res) => {
-  res.send("Server is running");
+// Newsletter Subscription Schema
+const newsletterSchema = mongoose.Schema({
+  email: {
+    type: String,
+    unique: true,
+  },
 });
 
-// signup api
-app.post("/signup", async (req, res) => {
+// Newsletter Subscription Model
+const NewsletterSubscription = mongoose.model('NewsletterSubscription', newsletterSchema);
+
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
+
+// Signup API
+app.post('/signup', async (req, res) => {
   console.log(req.body);
-  //check if email is already in database or new email
+  // Check if email is already in the database or new email
   const { email } = req.body;
 
   const result = await userModel.findOne({ email: email }).exec();
   console.log(result);
   if (result) {
-    res.send({ message: "Email already registered", alert: false });
+    res.send({ message: 'Email already registered', alert: false });
   } else {
     const data = userModel(req.body);
     const save = await data.save();
-    res.send({ message: "Signed up successfully", alert: true });
+    res.send({ message: 'Signed up successfully', alert: true });
   }
 });
 
-//login endpoint
-app.post("/login", async (req, res) => {
+// Login endpoint
+app.post('/login', async (req, res) => {
   const { email } = req.body;
   const result = await userModel.findOne({ email: email }).exec();
   if (result) {
@@ -87,12 +96,38 @@ app.post("/login", async (req, res) => {
       email: result.email,
     };
     console.log(dataSend);
-    res.send({ message: "login is successful", alert: true, data: dataSend });
+    res.send({ message: 'Login is successful', alert: true, data: dataSend });
   } else {
     res.send({
-      message: "Email is not registered/Please signup",
+      message: 'Email is not registered/Please signup',
       alert: false,
     });
+  }
+});
+
+// Newsletter Subscription endpoint
+app.post('/subscribe', async (req, res) => {
+  try {
+    const { email } = req.body;
+    // Validate email
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if (!emailRegex.test(email)) {
+      res.status(400).send({ message: 'Invalid email format', alert: false });
+      return;
+    }
+
+    // Check if email is already subscribed
+    const subscriptionResult = await NewsletterSubscription.findOne({ email: email }).exec();
+    if (subscriptionResult) {
+      res.send({ message: 'Email is already subscribed', alert: false });
+    } else {
+      const newSubscription = new NewsletterSubscription({ email: email });
+      await newSubscription.save();
+      res.send({ message: 'Subscribed successfully', alert: true });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

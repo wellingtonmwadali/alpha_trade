@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../components/navbar";
-import Sidebar from "../../components/sidebar";
+import Sidebar from "../../components/Dashboard/sidebar";
 
 // logos
 import kidangaLogo from "../../assets/kidanga.png";
