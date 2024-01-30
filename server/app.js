@@ -106,16 +106,19 @@ app.post('/login', async (req, res) => {
 });
 
 // Newsletter Subscription endpoint
-app.post('/subscribe', async (req, res) => {
+app.route('/subscribe')
+
+.post(async (req, res) => {
   try {
     const { email } = req.body;
-    // Validate email
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-    if (!emailRegex.test(email)) {
-      res.status(400).send({ message: 'Invalid email format', alert: false });
-      return;
-    }
+   // Validate email
+const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+if (!emailRegex.test(email)) {
+  res.status(400).send({ message: 'Invalid email format', alert: false });
+  return;
+}
 
+    
     // Check if email is already subscribed
     const subscriptionResult = await NewsletterSubscription.findOne({ email: email }).exec();
     if (subscriptionResult) {

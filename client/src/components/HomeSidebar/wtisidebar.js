@@ -38,10 +38,10 @@ const WtiSidebar = () => {
        
             <table className="w-full bg-white border border-gray-300">
               <thead>
-                <tr>
-                  <th className="py-1 border-b border-gray-300">Actual</th>
-                  <th className="py-1 border-b border-gray-300">Previous</th>
-                  <th className="py-1 border-b border-gray-300">Margin</th>
+                <tr className="bg-blue-400">
+                  <th className="py-1 border-b border border-gray-300 ">Actual</th>
+                  <th className="py-1 border-b border border-gray-300">Previous</th>
+                  <th className="py-1 border-b border border-gray-300">Margin</th>
                 </tr>
               </thead>
               {isLoading ? (
@@ -50,13 +50,13 @@ const WtiSidebar = () => {
               <tbody>
                 {crudeOilData.slice(0,6).map((entry) => (
                   <tr key={entry.Date}>
-                    <td className="py-1 px-2 border-b border-gray-300">
+                    <td className="py-1 px-2 border-b  border border-gray-300">
                       {entry.Price}
                     </td>
-                    <td className="py-1 px-2 border-b border-gray-300">
+                    <td className="py-1 px-2 border-b  border border-gray-300">
                       {entry.Previous}
                     </td>
-                    <td className="py-1 px-2 border-b border-gray-300">
+                    <td className="py-1 px-2 border-b  border border-gray-300">
                       {entry.PriceMargin}
                     </td>
                   </tr>

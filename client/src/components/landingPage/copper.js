@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Loader = () => (
-  <div className="flex justify-center items-center h-full">
+  <div className="flex justify-center h-full">
     <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-blue-500"></div>
   </div>
 );
@@ -49,15 +49,15 @@ const Copper = () => {
         <div className="mt-8">
           <table className="w-full bg-white border border-gray-300">
             <thead>
-              <tr>
-                <th className="py-2 border-b border-gray-300">Actual</th>
-                <th className="py-2 border-b border-gray-300">Previous</th>
-                <th className="py-2 border-b border-gray-300">Margin</th>
-                <th className="py-2 border-b border-gray-300">Highest</th>
-                <th className="py-2 border-b border-gray-300">Lowest</th>
-                <th className="py-2 border-b border-gray-300">Unit</th>
-                <th className="py-2 border-b border-gray-300">Frequency</th>
-              </tr>
+              <tr className="bg-blue-400">
+                <th className="py-2 border-b font-light md:font-bold border border-gray-300">Actual</th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Previous</th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Margin</th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Highest</th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Lowest</th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Unit</th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Frequency</th>
+              </tr> 
             </thead>
             {isLoading ? (
               <Loader /> // Display loader while data is loading
@@ -65,25 +65,25 @@ const Copper = () => {
               <tbody>
                 {crudeOilData.slice(0, 1).map((entry) => (
                   <tr key={entry.Date}>
-                    <td className="py-2 px-4 border-b border-gray-300">
+                    <td className="py-2 px-4 border-b  border border-gray-300">
                       {entry.Price}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
+                    <td className="py-2 px-4 border-b  border border-gray-300">
                       {entry.Previous}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
+                    <td className="py-2 px-4 border-b  border border-gray-300">
                       {entry.priceChange}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
+                    <td className="py-2 px-4 border-b  border border-gray-300">
                       {entry.Highest}
                     </td>
                     <td className="py-2 px-4 border-b border-gray-300">
                       {entry.Lowest}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
+                    <td className="py-2 px-4 border-b  border border-gray-300">
                       {entry.Unit}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
+                    <td className="py-2 px-4 border-b  border border-gray-300">
                       {entry.collectionPeriod}
                     </td>
                   </tr>
