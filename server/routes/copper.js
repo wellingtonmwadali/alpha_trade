@@ -16,8 +16,8 @@ router.get('/copper', async (req, res) => {
     const historicalPrices = response.data.data;
 
        // Calculate highest and lowest prices within the entire period
-       const priceHigh = Math.max(...historicalPrices.map((price) => price.value));
-       const priceLow = Math.min(...historicalPrices.map((price) => price.value));
+       const priceHigh = parseFloat(Math.max(...historicalPrices.map((price) => price.value)));
+       const priceLow = parseFloat(Math.min(...historicalPrices.map((price) => price.value)));
    
   
     const formattedData = historicalPrices.map((price, index) => {
@@ -37,8 +37,8 @@ router.get('/copper', async (req, res) => {
           priceChange : priceChange.toFixed(2),
           PriceTrend: priceTrend,
           PriceMargin: priceMargin.toFixed(2) + '%',
-          Highest: parseFloat(priceHigh).toFixed(2),
-          Lowest: parseFloat(priceLow).toFixed(2),
+          Highest: priceHigh.toFixed(2),
+          Lowest: priceLow.toFixed(2),
           collectionPeriod: "1976 to 2023",
           Frequency: "Monthly",
   

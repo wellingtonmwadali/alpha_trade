@@ -16,8 +16,8 @@ router.get("/aluminium", async (req, res) => {
     const historicalPrices = response.data.data;
 
     // Calculate highest and lowest prices within the entire period
-    const priceHigh = Math.max(...historicalPrices.map((price) => price.value));
-    const priceLow = Math.min(...historicalPrices.map((price) => price.value));
+    const priceHigh =parseFloat( Math.max(...historicalPrices.map((price) => price.value)));
+    const priceLow = parseFloat(Math.min(...historicalPrices.map((price) => price.value)));
 
     const formattedData = historicalPrices.map((price, index) => {
       const currentPrice = price.value;

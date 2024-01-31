@@ -18,7 +18,6 @@ import CopperSidebar from "../components/HomeSidebar/copperSidebar";
 import AluminiumSidebar from "../components/HomeSidebar/aluminiumSidebar";
 import Newsletter from "../components/newsletter";
 
-
 const Home = () => {
   const sliderSettings = {
     dots: true,
@@ -73,7 +72,7 @@ const Home = () => {
             user-friendly experience.
           </p>
         </div>
-        <div className="mt-12 bg-slate-200 ">
+        <div className="mt-8 bg-slate-200 ">
           <h1 className="mb:text-4xl text-3xl font-bold flex justify-center py-4">
             Our Distinctive Features<span className="text-red-400 "> :</span>
           </h1>
@@ -149,24 +148,24 @@ const Home = () => {
             <Aluminium />
           </div>
           <div className="md:w-1/3">
-       <div className="mt-4 p-4"><WtiSidebar /></div>
-            <div className="mt-2 p-4">
-              {" "}
+            <div className=" p-4">
+              <WtiSidebar />
+            </div>
+            <div className=" p-4">
               <BrentSidebar />
             </div>
-            <div className="mt-2 p-4">
-              {" "}
+            <div className=" p-4">
               <NaturalGasSidebar />
             </div>
-            <div className="mt-2 p-4">
-              {" "}
+            <div className=" p-4">
               <CopperSidebar />
             </div>
-            <div className="mt-2 p-4">
-              {" "}
+            <div className=" p-4">
               <AluminiumSidebar />
             </div>
-            <div className="mt-4 p-4"><Newsletter/></div>
+            <div className="mt-2 p-4">
+              <Newsletter />
+            </div>
           </div>
         </div>
       </div>

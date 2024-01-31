@@ -15,9 +15,19 @@ router.get('/news', async (req, res) => {
     const alphaVantageUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=${topics}&economics=${economics}&retail=${retail}&manufacturing=${manufacturing}&apikey=${apiKey}`;
 
     const response = await axios.get(alphaVantageUrl);
-    const newsData = response.data;
+    //convert object to an array
+    const newsData = Object.values(response.data.feed || []);
 
-    res.json(newsData);
+    const formattedNewsData = newsData.map((item) => {
+      return {
+        title: item.title,
+        author: item.authors && item.authors.length > 0 ? item.authors[0] : 'Unknown Author',
+        summary: item.summary,
+        source: item.source,        
+      };
+    });
+
+    res.json(formattedNewsData);
   } catch (error) {
     console.error(error);
 
