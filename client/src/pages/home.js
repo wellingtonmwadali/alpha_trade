@@ -17,6 +17,7 @@ import NaturalGasSidebar from "../components/HomeSidebar/naturalgasSidebar";
 import CopperSidebar from "../components/HomeSidebar/copperSidebar";
 import AluminiumSidebar from "../components/HomeSidebar/aluminiumSidebar";
 import Newsletter from "../components/newsletter";
+import NewsList from "../components/newslist";
 
 const Home = () => {
   const sliderSettings = {
@@ -168,6 +169,11 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <div className="mt-4">
+            <h1 className="font-extrabold text-2xl flex justify-center underline text-red-500">Latest Updates</h1>
+            <p className="font-light text-center text-lg">At Alpha Trade we are committed in providing real time latest updates</p>
+            <NewsList maxItems={6} />
+          </div>
       </div>
     </>
   );

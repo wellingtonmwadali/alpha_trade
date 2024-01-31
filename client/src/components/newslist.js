@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const NewsList = () => {
+const NewsList = (maxItems) => {
   const [news, setNews] = useState([]);
   const [selectedNews, setSelectedNews] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,7 +36,7 @@ const NewsList = () => {
       {error && <p className="text-red-500 mb-4 font-bold flex justify-center">{error}</p>}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {news.map((item, index) => (
+      {news.slice(0, maxItems).map((item, index) => (
           <div key={index} className="bg-white p-6 rounded-md shadow-md">
             <h2
               className="text-xl font-bold mb-2 cursor-pointer text-blue-500 hover:underline"
