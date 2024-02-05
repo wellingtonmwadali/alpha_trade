@@ -3,8 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaTimes, FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 import toast, {Toaster}  from 'react-hot-toast';
+import {auth,provider} from './config';
+import {signInWithPopup} from "@firebase/auth"
 
 const Signup = () => {
+  const [isEmail, setEmailValue] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -15,11 +18,40 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+
   const navigate = useNavigate();
 
   const handleClose = () => {
     navigate('/');
   };
+  const handleGoogleSignUp = async () => {
+    try {
+      const googleAuthData = await signInWithPopup(auth, provider);
+
+      // Extract user information from Google authentication
+      const { email, displayName, uid } = googleAuthData.user;
+
+      // Store user in MongoDB database
+      await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/signup`, {
+        email,
+        displayName,
+        uid,
+      });
+
+      // Update component state with the user's email
+      setEmailValue(email);
+
+      // Store email in localStorage for future use
+      localStorage.setItem('email', email);
+
+      // Redirect to the dashboard page
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Error during Google sign-up:', error);
+      toast.error('An error occurred during Google sign-up. Please try again.');
+    }
+  };
+
   
   const handleShowPassword = () => {
     setShowPassword((prev) => !prev);
@@ -75,6 +107,7 @@ const Signup = () => {
   return (
     <>
     <Toaster/>
+
     <div className='md:flex  md:flex-row h-screen w-full'>
       <FaTimes
         className="absolute top-4 right-4 cursor-pointer text-white text-2xl "
@@ -98,7 +131,7 @@ const Signup = () => {
          id="firstName"
          name="firstName"
          placeholder="First Name"
-         className="w-full rounded-md shadow-xl  p-3 text-black bg-slate-100 focus:outline-none"
+         className="w-full rounded-md shadow-xl  p-2 text-black bg-slate-100 focus:outline-none"
          value={data.firstName}
          onChange={handleOnChange}
        />
@@ -109,7 +142,7 @@ const Signup = () => {
          id="lastName"
          name="lastName"
          placeholder="Last Name"
-         className="w-full p-3 text-black rounded-md shadow-xl bg-slate-100 focus:outline-none"
+         className="w-full p-2 text-black rounded-md shadow-xl bg-slate-100 focus:outline-none"
          value={data.lastName}
          onChange={handleOnChange}
        />
@@ -122,7 +155,7 @@ const Signup = () => {
        id="email"
        name="email"
        placeholder="Email"
-       className="w-full p-3 text-black shadow-xl rounded-md bg-slate-100 focus:outline-none"
+       className="w-full p-2 text-black shadow-xl rounded-md bg-slate-100 focus:outline-none"
        value={data.email}
        onChange={handleOnChange}
      />
@@ -134,7 +167,7 @@ const Signup = () => {
             id="password"
             name="password"
             placeholder="Password"
-            className="w-full rounded-md p-3 text-black shadow-xl bg-slate-100 focus:outline-none"
+            className="w-full rounded-md p-2 text-black shadow-xl bg-slate-100 focus:outline-none"
             value={data.password}
             onChange={handleOnChange}
           />
@@ -151,7 +184,7 @@ const Signup = () => {
             id="confirmPassword"
             name="confirmPassword"
             placeholder="Confirm Password"
-            className="w-full shadow-xl rounded-md p-3 text-black bg-slate-100 focus:outline-none"
+            className="w-full shadow-xl rounded-md p-2 text-black bg-slate-100 focus:outline-none"
             value={data.confirmPassword}
             onChange={handleOnChange}
           />
@@ -166,14 +199,20 @@ const Signup = () => {
    <div className='flex justify-center '>
      <button
        type="submit"
-       className={`bg-green-300 text-white py-3 px-14 rounded-md font-bold shadow-md ${!isChecked && 'opacity-50 cursor-not-allowed'}`}
+       className={`bg-green-300 text-white py-2 px-14 rounded-md font-bold shadow-md ${!isChecked && 'opacity-50 cursor-not-allowed'}`}
        disabled={!isChecked}
      >
        CREATE MY ACCOUNT
      </button>
    </div>
+   <div className='flex justify-center mt-2'>
+    
+    <button
+    className='bg-red-300 text-white py-2 px-14 rounded-md font-bold shadow-md'
+    onClick={handleGoogleSignUp}>Signin with Google</button>
+  </div>
    {/* Terms and Conditions Checkbox */}
-   <div className="mb-4">
+   <div className="mt-4">
      <label className=" text-white">
        <input
          type="checkbox"

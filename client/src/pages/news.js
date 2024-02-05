@@ -8,7 +8,7 @@ const News = () => {
     <div>
       <Header />
       <h1 className="text-3xl font-bold mb-8 flex justify-center mt-4 text-red-500 underline">
-        Latest News
+        News & Updates
       </h1>
       <p className='font-light text-lg px-2 bg-slate-200'>
         Delve into the pulse of global industries with our curated news section,
