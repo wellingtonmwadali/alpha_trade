@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../../components/navbar';
 import Sidebar from '../../components/Dashboard/sidebar';
 import GridSystem from '../../components/grid';
+import Footer from "../../components/footer";
 
 const Dashboard = () => {
   return (
@@ -36,7 +37,7 @@ const Dashboard = () => {
           <div className="mt-4">
             <GridSystem />
           </div>
-          <div className="mt-4 bg-blue-200 rounded-sm">
+          <div className="mt-4 bg-blue-200 rounded-sm mb-5">
             <p className='p-4 font-light'>
               The information provided on this platform, including commodity
               prices, market analyses, and news, is for informational purposes
@@ -47,6 +48,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

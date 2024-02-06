@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../../components/navbar'
 import Sidebar from '../../components/Dashboard/sidebar'
 import NewsList from '../../components/newslist';
+import Footer from '../../components/footer';
 
 const PremiumArticles = () => {
   return (
@@ -30,7 +31,7 @@ const PremiumArticles = () => {
         <NewsList/>
       </div>
       </div>
-      
+      <Footer/>
     </div>
   );
 }

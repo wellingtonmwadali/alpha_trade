@@ -3,6 +3,7 @@ import Navbar from "../../components/navbar";
 import Sidebar from "../../components/Dashboard/sidebar";
 import CrudeOil from "../../assets/CrudeOil.jpeg";
 import OilPriceTable from "../../components/dataset/wtiTable";
+import Footer from "../../components/footer";
 
 const Wti = () => {
   return (
@@ -127,6 +128,7 @@ const Wti = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

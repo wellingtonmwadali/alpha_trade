@@ -32,7 +32,7 @@ const handleCommoditiesClick = () => {
         <div className='md:flex hidden text-4xl'><MdAccountCircle/></div>
         {/* Navigation Menu */}
         <nav className="hidden md:flex mr-48">
-          <Link to="/" className="">
+          <Link to="/Account" className="">
             Account
           </Link>
          

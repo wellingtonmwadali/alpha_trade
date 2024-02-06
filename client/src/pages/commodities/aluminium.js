@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar'
 import Sidebar from '../../components/Dashboard/sidebar'
 import Aluminium1 from '../../assets/Aluminium1.jpeg'
 import AluminiumTable from '../../components/dataset/aluminiumTable';
+import Footer from '../../components/footer';
 
 
 const Aluminium = () => {
@@ -178,6 +179,7 @@ const Aluminium = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

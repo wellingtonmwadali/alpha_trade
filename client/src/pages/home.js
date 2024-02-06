@@ -18,6 +18,7 @@ import CopperSidebar from "../components/HomeSidebar/copperSidebar";
 import AluminiumSidebar from "../components/HomeSidebar/aluminiumSidebar";
 import Newsletter from "../components/newsletter";
 import NewsList from "../components/newslist";
+import Footer from "../components/footer";
 
 const Home = () => {
   const sliderSettings = {
@@ -174,6 +175,7 @@ const Home = () => {
             <p className="font-light text-center text-lg">At Alpha Trade we are committed in providing real time latest updates</p>
             <NewsList maxItems={6} />
           </div>
+      <Footer/>
       </div>
     </>
   );

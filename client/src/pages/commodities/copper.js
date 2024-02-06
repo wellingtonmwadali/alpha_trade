@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar'
 import Sidebar from '../../components/Dashboard/sidebar'
 import copper from '../../assets/copper.jpeg';
 import CopperTable from '../../components/dataset/copperTable';
+import Footer from '../../components/footer';
 
 const Copper = () => {
   return (
@@ -155,6 +156,7 @@ const Copper = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

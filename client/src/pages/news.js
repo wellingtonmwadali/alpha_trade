@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/header'
 import NewsList from '../components/newslist'
+import Footer from "../components/footer";
 
 
 const News = () => {
@@ -24,6 +25,7 @@ const News = () => {
         shaping the business world today.
       </p>
       <NewsList />
+      <Footer/>
     </div>
   );
 }

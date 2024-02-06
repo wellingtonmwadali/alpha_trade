@@ -17,6 +17,7 @@ import Copper from './pages/commodities/copper';
 import Aluminium from './pages/commodities/aluminium';
 import Gas from './pages/commodities/gas';
 import PremiumArticles from './pages/userAccount/PremiumArticles';
+import Account from './pages/userAccount/account';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
@@ -41,6 +42,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/commodities/aluminium" element={<Aluminium />} />
         <Route path="/commodities/natural-gas" element={<Gas />} />
         <Route path="/premium-articles" element={<PremiumArticles />} />
+        <Route path="/account" element={<Account/>} />
       </Routes>
     </Router>
     </Provider>

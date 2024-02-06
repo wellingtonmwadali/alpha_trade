@@ -12,6 +12,8 @@ import translogisticsLogo from "../../assets/Translogistics.png";
 import aeroMetalsLogo from "../../assets/AeroMetals.png";
 import techAlloyLogo from "../../assets/TechAlloy.png";
 import ecoALULogo from "../../assets/Ecoalu.png";
+import Footer from "../../components/footer";
+
 
 const partners = [
   {
@@ -118,6 +120,7 @@ const Partners = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

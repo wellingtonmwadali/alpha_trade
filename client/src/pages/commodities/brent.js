@@ -3,6 +3,7 @@ import Navbar from "../../components/navbar";
 import Sidebar from "../../components/Dashboard/sidebar";
 import Brent from "../../assets/Brent.jpeg";
 import CrudeOilBrentTable from "../../components/dataset/brentTable";
+import Footer from "../../components/footer";
 
 const CrudeBrent = () => {
   return (
@@ -164,6 +165,7 @@ const CrudeBrent = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

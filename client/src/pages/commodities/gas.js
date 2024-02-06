@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar'
 import Sidebar from '../../components/Dashboard/sidebar'
 import GasTable from '../../components/dataset/gasTable'
 import naturalgas from '../../assets/naturalgas.jpeg'
+import Footer from '../../components/footer'
 
 const Gas = () => {
   return (
@@ -185,6 +186,7 @@ const Gas = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
