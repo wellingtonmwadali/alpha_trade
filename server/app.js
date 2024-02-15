@@ -9,6 +9,7 @@ const brent = require('./routes/brent');
 const copper = require('./routes/copper');
 const aluminium = require('./routes/aluminium');
 const news = require('./routes/news');
+const userRoutes = require('./routes/userRoutes');
 
 dotenv.config();
 const app = express();
@@ -29,6 +30,12 @@ app.use('/api', brent);
 app.use('/api', copper);
 app.use('/api', aluminium);
 app.use('/api', news);
+app.use('/api',  userRoutes);
+
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).json({ error: 'Internal server error' });
+// });
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -40,6 +47,7 @@ db.once('open', () => {
 
 // Schema
 const userSchema = mongoose.Schema({
+  id: { type: Schema.Types.ObjectId, required: true },
   firstName: String,
   lastName: String,
   email: {

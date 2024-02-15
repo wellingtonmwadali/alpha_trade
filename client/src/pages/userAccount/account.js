@@ -1,59 +1,107 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Navbar from '../../components/navbar';
-import Sidebar from '../../components/Dashboard/sidebar';
-import axios from 'axios';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  deleteAccountRequest,
+  deleteAccountSuccess,
+  deleteAccountFailure,
+  signOutRequest,
+  signOutSuccess,
+  signOutFailure,
+  updateUserData,
+  updateUserDataSuccess,
+  updateUserDataFailure,
+} from "../../redux/user/userSlice";
+import Navbar from "../../components/navbar";
+import Sidebar from "../../components/Dashboard/sidebar";
+import axios from "axios";
 
-const Account = () => {
-  const [userData, setUserData] = useState(null);
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate(); 
+export default function Account() {
+  const userData = useSelector((state) => state.user.userData);
+  const isLoading = useSelector((state) => state.user.isLoading);
+  const [password, setPassword] = useState("");
+  const history = useNavigate();
+  const dispatch = useDispatch();
 
-  // Function to fetch user account information from the backend
-  const fetchUserData = async () => {
-    try {
-      // Make a request to fetch user data
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/signup`);
-      setUserData(response.data);
-      console.log(response)
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  };
+  // Function to fetch user data from backend
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_SERVER_DOMAIN}/user`
+        );
+        dispatch(updateUserData(response.data));
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, [dispatch]);
   // Function to update the password
   const updatePassword = async () => {
     try {
+      // Dispatch password update request action
+      dispatch(updateUserData());
+
       // Make a request to update the user's password
-      await axios.put(`${process.env.REACT_APP_SERVER_DOMAIN}/signup`, { password }); // Update the endpoint accordingly
+      await axios.put(
+        `${process.env.REACT_APP_SERVER_DOMAIN}/update-password`,
+        { password }
+      ); // Update the endpoint accordingly
+
+      // Dispatch update password success action
+      dispatch(updateUserDataSuccess());
+
       // Reset the password field after update
-      setPassword('');
+      setPassword("");
     } catch (error) {
-      console.error('Error updating password:', error);
+      console.error("Error updating password:", error);
+      // Dispatch update password failure action
+      dispatch(updateUserDataFailure());
     }
   };
 
   // Function to delete the account
   const deleteAccount = async () => {
     try {
+      // Dispatch delete account request action
+      dispatch(deleteAccountRequest());
+
       // Make a request to delete the user account
-      await axios.delete(`${process.env.REACT_APP_SERVER_DOMAIN}/signup`); // Update the endpoint accordingly
+      await axios.delete(
+        `${process.env.REACT_APP_SERVER_DOMAIN}/delete-account`
+      ); // Update the endpoint accordingly
+
+      // Dispatch delete account success action
+      dispatch(deleteAccountSuccess());
+
       // Redirect to the login page after successful deletion
-      navigate.push('/login');
+      history.push("/login");
     } catch (error) {
-      console.error('Error deleting account:', error);
+      console.error("Error deleting account:", error);
+      // Dispatch delete account failure action
+      dispatch(deleteAccountFailure());
     }
   };
 
   // Function to handle sign out
-  const handleSignOut = () => {
-    // Implement sign out logic
-  };
+  const handleSignOut = async () => {
+    try {
+      // Dispatch sign out request action
+      dispatch(signOutRequest());
 
-  useEffect(() => {
-    // Fetch user data on component mount
-    fetchUserData();
-  }, []);
+      // Perform sign out logic
+
+      // Dispatch sign out success action
+      dispatch(signOutSuccess());
+    } catch (error) {
+      console.error("Error signing out:", error);
+      // Dispatch sign out failure action
+      dispatch(signOutFailure());
+    }
+  };
 
   return (
     <div>
@@ -66,10 +114,12 @@ const Account = () => {
             <div className="max-w-md mx-auto">
               <h2 className="text-2xl font-bold mb-4">Account Information</h2>
               <div className="mb-4">
-                <label className="block mb-2 text-sm font-bold">Username:</label>
+                <label className="block mb-2 text-sm font-bold">
+                  Username:
+                </label>
                 <input
                   type="text"
-                  value={userData.username}
+                  defaultValue={userData.username}
                   readOnly
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                 />
@@ -78,13 +128,15 @@ const Account = () => {
                 <label className="block mb-2 text-sm font-bold">Email:</label>
                 <input
                   type="email"
-                  value={userData.email}
+                  defaultValue={userData.email}
                   readOnly
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div className="mb-4">
-                <label className="block mb-2 text-sm font-bold">New Password:</label>
+                <label className="block mb-2 text-sm font-bold">
+                  Password:
+                </label>
                 <input
                   type="password"
                   value={password}
@@ -92,16 +144,28 @@ const Account = () => {
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                 />
               </div>
-              <button onClick={updatePassword} className="bg-blue-500 text-white py-2 px-4 rounded-md mr-2">Update Password</button>
-              <button onClick={deleteAccount} className="bg-red-500 text-white py-2 px-4 rounded-md mr-2">Delete Account</button>
-              <button onClick={handleSignOut} className="bg-gray-500 text-white py-2 px-4 rounded-md">Sign Out</button>
+              <button
+                onClick={updatePassword}
+                className="bg-blue-500 text-white py-2 px-4 rounded-md mr-2"
+              >
+                Update Password
+              </button>
+              <button
+                onClick={deleteAccount}
+                className="bg-red-500 text-white py-2 px-4 rounded-md mr-2"
+              >
+                Delete Account
+              </button>
+              <button
+                onClick={handleSignOut}
+                className="bg-gray-500 text-white py-2 px-4 rounded-md"
+              >
+                Sign Out
+              </button>
             </div>
           )}
         </div>
       </div>
     </div>
   );
-};
-
-export default Account;
-
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setError, setSubscribed } from "../redux/newsletterSlice";
+import { setError, setSubscribed } from "../redux/newsletter/newsletterSlice";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
