@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/navbar";
+import Navbar from "../../components/Dashboard/navbar";
 import Sidebar from "../../components/Dashboard/sidebar";
 import CrudeOil from "../../assets/CrudeOil.jpeg";
 import OilPriceTable from "../../components/dataset/wtiTable";

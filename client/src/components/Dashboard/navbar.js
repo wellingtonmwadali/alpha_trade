@@ -6,7 +6,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { MdAccountCircle } from "react-icons/md";
 
 
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,8 +32,8 @@ const handleCommoditiesClick = () => {
         <div className='md:flex hidden text-4xl'><MdAccountCircle/></div>
         {/* Navigation Menu */}
         <nav className="hidden md:flex mr-48">
-          <Link to="/Account" className="">
-            Account
+          <Link to="/login" className="">
+            Log out
           </Link>
          
         </nav>

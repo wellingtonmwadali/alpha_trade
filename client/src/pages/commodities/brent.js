@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/navbar";
+import Navbar from "../../components/Dashboard/navbar";
 import Sidebar from "../../components/Dashboard/sidebar";
 import Brent from "../../assets/Brent.jpeg";
 import CrudeOilBrentTable from "../../components/dataset/brentTable";

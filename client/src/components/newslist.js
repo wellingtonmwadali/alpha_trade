@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const NewsList = (maxItems) => {
+const NewsList = ({maxItems}) => {
   const [news, setNews] = useState([]);
   const [selectedNews, setSelectedNews] = useState(null);
   const [loading, setLoading] = useState(true);

@@ -27,7 +27,7 @@ Alpha Trade is a web application designed to provide users with historical data 
 
 ## Installation
 
-1. Clone the repository from [GitHub Repo URL].
+1. Clone the repository from https://github.com/wellingtonmwadali/alpha_trade.
 2. Install dependencies using `npm install`.
 3. Set up a MongoDB database and configure the connection string in the backend.
 4. Run the development server using `npm start`.

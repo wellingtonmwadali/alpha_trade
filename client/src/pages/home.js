@@ -152,30 +152,30 @@ const Home = () => {
           <div className="md:w-1/3">
             <div className=" p-4">
               <WtiSidebar />
-            </div>
-            <div className=" p-4">
+
               <BrentSidebar />
-            </div>
-            <div className=" p-4">
+
               <NaturalGasSidebar />
-            </div>
-            <div className=" p-4">
+
               <CopperSidebar />
-            </div>
-            <div className=" p-4">
+
               <AluminiumSidebar />
-            </div>
-            <div className="mt-2 p-4">
+           
               <Newsletter />
             </div>
           </div>
         </div>
         <div className="mt-4">
-            <h1 className="font-extrabold text-2xl flex justify-center underline text-red-500">Latest Updates</h1>
-            <p className="font-light text-center text-lg">At Alpha Trade we are committed in providing real time latest updates</p>
-            <NewsList maxItems={6} />
-          </div>
-      <Footer/>
+          <h1 className="font-extrabold text-2xl flex justify-center underline text-red-500">
+            Latest Updates
+          </h1>
+          <p className="font-light text-center text-lg">
+            At Alpha Trade we are committed in providing real time latest
+            updates
+          </p>
+          <NewsList maxItems={6} />
+        </div>
+        <Footer />
       </div>
     </>
   );

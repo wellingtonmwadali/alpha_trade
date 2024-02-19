@@ -9,7 +9,7 @@ const brent = require('./routes/brent');
 const copper = require('./routes/copper');
 const aluminium = require('./routes/aluminium');
 const news = require('./routes/news');
-const userRoutes = require('./routes/userRoutes');
+
 
 dotenv.config();
 const app = express();
@@ -30,7 +30,7 @@ app.use('/api', brent);
 app.use('/api', copper);
 app.use('/api', aluminium);
 app.use('/api', news);
-app.use('/api',  userRoutes);
+
 
 // app.use((err, req, res, next) => {
 //   console.error(err.stack);
@@ -46,16 +46,19 @@ db.once('open', () => {
 });
 
 // Schema
-const userSchema = mongoose.Schema({
-  id: { type: Schema.Types.ObjectId, required: true },
+// Destructure Schema and ObjectId from mongoose
+const { Schema, ObjectId } = mongoose;
+
+// Define the schema
+const userSchema = new Schema({
+  id: { type: ObjectId, required: true },
   firstName: String,
   lastName: String,
   email: {
     type: String,
     unique: true,
-  },
-  password: String,
-  confirmPassword: String,
+    required: true
+  }
 });
 
 // Model

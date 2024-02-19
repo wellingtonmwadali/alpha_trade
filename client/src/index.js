@@ -17,7 +17,6 @@ import Copper from './pages/commodities/copper';
 import Aluminium from './pages/commodities/aluminium';
 import Gas from './pages/commodities/gas';
 import PremiumArticles from './pages/userAccount/PremiumArticles';
-import Account from './pages/userAccount/account';
 import Disclaimer from './pages/Footer/Disclaimer';
 import TermsNConditions from './pages/Footer/Terms&Conditions';
 import PrivacyPolicy from './pages/Footer/PrivacyPolicy';
@@ -45,7 +44,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/commodities/aluminium" element={<Aluminium />} />
         <Route path="/commodities/natural-gas" element={<Gas />} />
         <Route path="/premium-articles" element={<PremiumArticles />} />
-        <Route path="/account" element={<Account/>} />
         <Route path="/disclaimer" element={<Disclaimer/>} />
         <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
         <Route path="/terms-and-conditions" element={<TermsNConditions/>} />
