@@ -29,7 +29,7 @@ const WtiSidebar = () => {
   }, []);
   return (
     <div>
-      <div className="w-full mx-auto p-2 border border-gray-300 my-8 bg-slate-200 ">
+      <div className="w-full mx-auto p-2 border border-gray-300 my-4 bg-slate-200 ">
         <div className="border-b border-gray-300 mb-2 p-2  bg-slate-100">
           <h1 className="text-xl font-bold">Crude Oil(WTI)</h1>
         </div>
