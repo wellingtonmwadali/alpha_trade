@@ -57,7 +57,7 @@ const Copper = () => {
                 <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Lowest</th>
                 <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Unit</th>
                 <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Frequency</th>
-              </tr> 
+              </tr> font-light md:font-semibold 
             </thead>
             {isLoading ? (
               <Loader /> // Display loader while data is loading
@@ -65,25 +65,25 @@ const Copper = () => {
               <tbody>
                 {crudeOilData.slice(0, 1).map((entry) => (
                   <tr key={entry.Date}>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  border-b  font-light md:font-semibold border border-gray-300">
                       {entry.Price}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  border-b  font-light md:font-semibold border border-gray-300">
                       {entry.Previous}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  border-b  font-light md:font-semibold border border-gray-300">
                       {entry.priceChange}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  border-b  font-light md:font-semibold border border-gray-300">
                       {entry.Highest}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
+                    <td className="py-2  font-light md:font-semibold border-b border-gray-300">
                       {entry.Lowest}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  font-light md:font-semibold border-b  border border-gray-300">
                       {entry.Unit}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  border-b  border border-gray-300">
                       {entry.collectionPeriod}
                     </td>
                   </tr>

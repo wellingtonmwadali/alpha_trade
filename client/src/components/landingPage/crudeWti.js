@@ -68,25 +68,25 @@ const CrudeOilWti = () => {
               <tbody>
                 {crudeOilData.slice(0, 1).map((entry) => (
                   <tr key={entry.Date}>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  font-light md:font-semibold border-b  border border-gray-300">
                       {entry.Price}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
+                    <td className="py-2  font-light md:font-semibold border-b border-gray-300">
                       {entry.Previous}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  font-light md:font-semibold border-b  border border-gray-300">
                       {entry.priceChange}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  font-light md:font-semibold border-b  border border-gray-300">
                       {entry.Highest}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  font-light md:font-semibold border-b  border border-gray-300">
                       {entry.Lowest}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  font-light md:font-semibold border-b  border border-gray-300">
                       {entry.Unit}
                     </td>
-                    <td className="py-2 px-4 border-b  border border-gray-300">
+                    <td className="py-2  font-light md:font-semibold border-b  border border-gray-300">
                       {entry.collectionPeriod}
                     </td>
                   </tr>
