@@ -65,25 +65,25 @@ const Copper = () => {
               <tbody>
                 {crudeOilData.slice(0, 1).map((entry) => (
                   <tr key={entry.Date}>
-                    <td className="md:py-2  border-b  font-light md:font-semibold border border-gray-300">
+                    <td className="md:py-2 md:text-center border-b  font-light md:font-semibold border border-gray-300">
                       {entry.Price}
                     </td>
-                    <td className="md:py-2  border-b  font-light md:font-semibold border border-gray-300">
+                    <td className="md:py-2 md:text-center border-b  font-light md:font-semibold border border-gray-300">
                       {entry.Previous}
                     </td>
-                    <td className="md:py-2  border-b  font-light md:font-semibold border border-gray-300">
+                    <td className="md:py-2 md:text-center border-b  font-light md:font-semibold border border-gray-300">
                       {entry.priceChange}
                     </td>
-                    <td className="md:py-2  border-b  font-light md:font-semibold border border-gray-300">
+                    <td className="md:py-2 md:text-center border-b  font-light md:font-semibold border border-gray-300">
                       {entry.Highest}
                     </td>
-                    <td className="md:py-2  font-light md:font-semibold border-b border-gray-300">
+                    <td className="md:py-2 md:text-center font-light md:font-semibold border-b border-gray-300">
                       {entry.Lowest}
                     </td>
-                    <td className="md:py-2  font-light md:font-semibold border-b  border border-gray-300">
+                    <td className="md:py-2 md:text-center font-light md:font-semibold border-b  border border-gray-300">
                       {entry.Unit}
                     </td>
-                    <td className="md:py-2  border-b  border border-gray-300">
+                    <td className="md:py-2 md:text-center border-b  border border-gray-300">
                       {entry.collectionPeriod}
                     </td>
                   </tr>

@@ -63,25 +63,25 @@ useEffect(() => {
             <tbody>
               {crudeOilData.slice(0, 1).map((entry) => (
                 <tr key={entry.Date}>
-                  <td className="md:py-2  border-  border border-gray-300">
+                  <td className="md:py-2  border-b  border border-gray-300  md:font-semibold  md:text-center ">
                     {entry.Price}
                   </td>
-                  <td className="md:py-2  border-b font-light md:font-semibold border border-gray-300">
+                  <td className="md:py-2  border-b font-light md:font-semibold border md:text-center border-gray-300">
                     {entry.Previous}
                   </td>
-                  <td className="md:py-2  border-b  font-light md:font-semibold border border-gray-300">
+                  <td className="md:py-2  border-b  font-light md:font-semibold  md:text-center border border-gray-300">
                     {entry.priceChange}
                   </td>
-                  <td className="md:py-2  border-b font-light md:font-semibold border-gray-300">
+                  <td className="md:py-2  border-b font-light md:font-semibold md:text-center border-gray-300">
                     {entry.Highest}
                   </td>
-                  <td className="md:py-2  border-b font-light md:font-semibold  border border-gray-300">
+                  <td className="md:py-2  border-b font-light md:font-semibold md:text-center border border-gray-300">
                     {entry.Lowest}
                   </td>
-                  <td className="md:py-2  border-b font-light md:font-semibold border-gray-300">
+                  <td className="md:py-2  border-b font-light md:font-semibold md:text-center border-gray-300">
                     {entry.Unit}
                   </td>
-                  <td className="md:py-2 px-4 border-b  border border-gray-300">
+                  <td className="md:py-2 px-4 border-b  border md:text-center border-gray-300">
                     {entry.collectionPeriod}
                   </td>
                 </tr>
