@@ -9,7 +9,7 @@ const brent = require('./routes/brent');
 const copper = require('./routes/copper');
 const aluminium = require('./routes/aluminium');
 const news = require('./routes/news');
-import path from 'path';
+
 
 
 dotenv.config();
@@ -37,11 +37,7 @@ app.use('/api', news);
 //   console.error(err.stack);
 //   res.status(500).json({ error: 'Internal server error' });
 // });
-app.use(express.static(path.join(__dirname, '/client/build')));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-})
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
