@@ -7,7 +7,7 @@ import {auth,provider} from './config';
 import {signInWithPopup} from "@firebase/auth"
 
 const Signup = () => {
-  const [isEmail, setEmailValue] = useState('');
+  const [setEmailValue] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
