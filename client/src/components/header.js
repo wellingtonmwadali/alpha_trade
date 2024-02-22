@@ -50,7 +50,7 @@ const Header = () => {
           {/* Mobile Menu Content */}
           {/* This part will be visible when the button is clicked */}
           {isMobileMenuOpen && (
-            <div className="absolute top-20 left-1 right-1  p-9 space-y-5 ">
+            <div className="absolute top-20 z-50 bg-slate-100 left-1 right-1  p-9 space-y-5 ">
               <Link to="/" className="block border-b border-slate-200 p-5 hover:text-green-700">
                 Home
               </Link>
