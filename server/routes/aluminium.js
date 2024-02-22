@@ -13,16 +13,28 @@ router.get("/aluminium", async (req, res) => {
     const alphaVantageUrl = `https://www.alphavantage.co/query?function=ALUMINUM&interval=monthly&apikey=${apiKey}`;
 
     const response = await axios.get(alphaVantageUrl);
-    const historicalPrices = response.data.data;
+    const historicalPrices = Object.values(response.data.data);
+
+    // Filter out invalid values and parse remaining values as floats
+    const validPrices = historicalPrices
+      .filter((price) => !isNaN(parseFloat(price.value)))
+      .map((price) => parseFloat(price.value));
 
     // Calculate highest and lowest prices within the entire period
-    const priceHigh =parseFloat( Math.max(...historicalPrices.map((price) => price.value)));
-    const priceLow = parseFloat(Math.min(...historicalPrices.map((price) => price.value)));
+    const priceHigh = validPrices.length > 0 ? Math.max(...validPrices) : 0;
+    const priceLow = validPrices.length > 0 ? Math.min(...validPrices) : 0;
 
     const formattedData = historicalPrices.map((price, index) => {
       const currentPrice = price.value;
-      const previousPrice =
-        index > 0 ? historicalPrices[index - 1].value : currentPrice;
+      // const previousPrice =
+      //   index > 0 ? historicalPrices[index - 1].value : currentPrice;
+      if (index === 0) {
+        // For the first entry, set previousPrice equal to the value of the second entry
+        previousPrice = historicalPrices[1].value;
+      } else {
+        // For all other entries, set previousPrice equal to the value of the second entry
+        previousPrice = historicalPrices[1].value;
+      }
       const priceChange = parseFloat(currentPrice - previousPrice);
       const priceMargin = parseFloat(
         ((currentPrice - previousPrice) / previousPrice) * 100

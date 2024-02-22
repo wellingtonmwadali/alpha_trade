@@ -13,7 +13,7 @@ router.get("/crude-oil-wti", async (req, res) => {
     const alphaVantageUrl = `https://www.alphavantage.co/query?function=WTI&interval=monthly&apikey=${apiKey}`;
 
     const response = await axios.get(alphaVantageUrl);
-    const historicalPrices = response.data.data;
+    const historicalPrices =Object.values(response.data.data);
 
      // Calculate highest and lowest prices within the entire period
      const priceHigh = Math.max(...historicalPrices.map((price) => price.value));
@@ -22,7 +22,14 @@ router.get("/crude-oil-wti", async (req, res) => {
 
   const formattedData = historicalPrices.map((price, index) => {
       const currentPrice = price.value;
-      const previousPrice = index > 0 ? historicalPrices[index - 1].value : currentPrice;
+      // const previousPrice = index > 0 ? historicalPrices[index - 1].value : currentPrice;
+      if (index === 0) {
+        // For the first entry, set previousPrice equal to the value of the second entry
+        previousPrice = historicalPrices[1].value;
+      } else {
+        // For all other entries, set previousPrice equal to the value of the second entry
+        previousPrice = historicalPrices[1].value;
+      }
       const priceChange = parseFloat(currentPrice - previousPrice)
       const priceMargin = parseFloat(((currentPrice - previousPrice)/ previousPrice) * 100);
       const priceTrend = index > 0 ? (priceMargin > 0 ? "Increase" : "Decrease") : "Neutral";
