@@ -14,7 +14,7 @@ const AluminiumSidebar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/aluminium");
+        const response = await axios.get("https://alpha-trade.onrender.com/api/aluminium");
         setCrudeOilData(response.data);
         setIsLoading(false);
       } catch (error) {

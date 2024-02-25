@@ -14,7 +14,7 @@ const Copper = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/copper");
+        const response = await axios.get("https://alpha-trade.onrender.com/api/copper");
         setCrudeOilData(response.data);
         setIsLoading(false);
       } catch (error) {

@@ -17,7 +17,7 @@ const GasTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/natural-gas');
+        const response = await axios.get('https://alpha-trade.onrender.com/api/natural-gas');
         setGasData(response.data);
         setIsLoading(false);
       } catch (error) {

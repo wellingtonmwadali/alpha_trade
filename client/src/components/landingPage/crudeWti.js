@@ -15,7 +15,7 @@ const CrudeOilWti = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/crude-oil-wti"
+          "https://alpha-trade.onrender.com/api/crude-oil-wti"
         );
         setCrudeOilData(response.data);
         setIsLoading(false);

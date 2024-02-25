@@ -16,7 +16,7 @@ const CrudeOilBrentTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/crude-oil-brent');
+        const response = await axios.get('https://alpha-trade.onrender.com/api/crude-oil-brent');
         setCrudeOilBrentData(response.data);
         setIsLoading(false);
       } catch (error) {

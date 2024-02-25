@@ -15,7 +15,7 @@ const NaturalGasSidebar = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/natural-gas"
+          "https://alpha-trade.onrender.com/natural-gas"
         );
         setCrudeOilData(response.data);
         setIsLoading(false);
