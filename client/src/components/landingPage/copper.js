@@ -14,7 +14,9 @@ const Copper = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://alpha-trade.onrender.com/api/copper");
+        const response = await axios.get(
+          "https://alpha-trade.onrender.com/api/copper"
+        );
         setCrudeOilData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -50,13 +52,27 @@ const Copper = () => {
           <table className="table-auto min-w-full bg-white border border-gray-300">
             <thead>
               <tr className="bg-blue-400">
-                <th className="py-2 border-b font-light md:font-bold border border-gray-300">Actual</th>
-                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Previous</th>
-                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Margin</th>
-                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Highest</th>
-                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Lowest</th>
-                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Unit</th>
-                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">Frequency</th>
+                <th className="py-2 border-b font-light md:font-bold border border-gray-300">
+                  Actual
+                </th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">
+                  Previous
+                </th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">
+                  Margin
+                </th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">
+                  Highest
+                </th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">
+                  Lowest
+                </th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">
+                  Unit
+                </th>
+                <th className="py-2 border-b font-light md:font-bold  border border-gray-300">
+                  Frequency
+                </th>
               </tr>
             </thead>
             {isLoading ? (

@@ -51,19 +51,33 @@ const NaturalGas = () => {
           <table className="table-auto min-w-full bg-white border border-gray-300">
             <thead>
               <tr className="bg-blue-400">
-                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">Actual</th>
-                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">Previous</th>
-                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">Margin</th>
-                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">Highest</th>
-                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">Lowest</th>
-                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">Unit</th>
-                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">Frequency</th>
+                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">
+                  Actual
+                </th>
+                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">
+                  Previous
+                </th>
+                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">
+                  Margin
+                </th>
+                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">
+                  Highest
+                </th>
+                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">
+                  Lowest
+                </th>
+                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">
+                  Unit
+                </th>
+                <th className="py-2 font-light md:font-bold   border-b border border-gray-300">
+                  Frequency
+                </th>
               </tr>
             </thead>
             {isLoading ? (
-                  <Loader />
-            // Display loader while data is loading font-light md:font-semibold
+              <Loader />
             ) : (
+              // Display loader while data is loading font-light md:font-semibold
               <tbody>
                 {crudeOilData.slice(0, 1).map((entry) => (
                   <tr key={entry.Date}>

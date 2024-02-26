@@ -1,8 +1,8 @@
 // Sidebar.js
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { BsHouseDoor, BsGem, BsPeople, BsNewspaper } from 'react-icons/bs';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { BsHouseDoor, BsGem, BsPeople, BsNewspaper } from "react-icons/bs";
 
 const Sidebar = () => {
   const [showCommoditiesSubMenu, setShowCommoditiesSubMenu] = useState(false);
@@ -20,7 +20,7 @@ const Sidebar = () => {
       <ul>
         <li className="mb-2">
           <Link to="/dashboard">
-            <BsHouseDoor className="inline mr-2" /> 
+            <BsHouseDoor className="inline mr-2" />
             Dashboard
           </Link>
         </li>
@@ -37,7 +37,9 @@ const Sidebar = () => {
                 <Link to="/commodities/crude-oil-wti">- Crude Oil(WTI)</Link>
               </li>
               <li>
-                <Link to="/commodities/crude-oil-brent">- Crude Oil(Brent)</Link>
+                <Link to="/commodities/crude-oil-brent">
+                  - Crude Oil(Brent)
+                </Link>
               </li>
               <li>
                 <Link to="/commodities/copper">- Copper</Link>
@@ -51,29 +53,30 @@ const Sidebar = () => {
             </ul>
           )}
         </li>
-        
-          <>
-            <li className="mb-2">
-              <Link to="/premium-articles" className="transition duration-300 transform translate-y-2">
-                <BsNewspaper className="inline mr-2" />
-                Premium Articles
-              </Link>
-            </li>
-            <li className="mb-2">
-              <Link to="/partners" className="transition duration-300 transform translate-y-2">
-                <BsPeople className="inline mr-2" />
-                Partners
-              </Link>
-            </li>
-          </>
-        
+
+        <>
+          <li className="mb-2">
+            <Link
+              to="/premium-articles"
+              className="transition duration-300 transform translate-y-2"
+            >
+              <BsNewspaper className="inline mr-2" />
+              Premium Articles
+            </Link>
+          </li>
+          <li className="mb-2">
+            <Link
+              to="/partners"
+              className="transition duration-300 transform translate-y-2"
+            >
+              <BsPeople className="inline mr-2" />
+              Partners
+            </Link>
+          </li>
+        </>
       </ul>
     </div>
   );
 };
 
 export default Sidebar;
-
-
-
-

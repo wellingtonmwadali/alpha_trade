@@ -14,7 +14,9 @@ const AluminiumSidebar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://alpha-trade.onrender.com/api/aluminium");
+        const response = await axios.get(
+          "https://alpha-trade.onrender.com/api/aluminium"
+        );
         setCrudeOilData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -37,8 +39,12 @@ const AluminiumSidebar = () => {
             <thead>
               <tr className="bg-blue-400">
                 <th className="py-1 border-b border border-gray-300">Actual</th>
-                <th className="py-1 border-b border border-gray-300">Previous</th>
-                <th className="py-1 border-b border border-gray-300 ">Margin</th>
+                <th className="py-1 border-b border border-gray-300">
+                  Previous
+                </th>
+                <th className="py-1 border-b border border-gray-300 ">
+                  Margin
+                </th>
               </tr>
             </thead>
             {isLoading ? (
@@ -55,7 +61,7 @@ const AluminiumSidebar = () => {
                     </td>
                     <td className="py-1 px-2 border-b  border border-gray-300">
                       {entry.PriceMargin}
-                    </td> 
+                    </td>
                   </tr>
                 ))}
               </tbody>

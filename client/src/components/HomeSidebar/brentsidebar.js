@@ -38,9 +38,15 @@ const BrentSidebar = () => {
           <table className="w-full bg-white border border-gray-300">
             <thead>
               <tr className="bg-blue-400">
-                <th className="py-1 border-b border border-gray-300 ">Actual</th>
-                <th className="py-1 border-b border border-gray-300 ">Previous</th>
-                <th className="py-1 border-b border border-gray-300 ">Margin</th>
+                <th className="py-1 border-b border border-gray-300 ">
+                  Actual
+                </th>
+                <th className="py-1 border-b border border-gray-300 ">
+                  Previous
+                </th>
+                <th className="py-1 border-b border border-gray-300 ">
+                  Margin
+                </th>
               </tr>
             </thead>
             {isLoading ? (
