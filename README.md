@@ -27,8 +27,8 @@ Alpha Trade is a web application designed to provide users with historical data 
 
   ## Deployment
 
-- **Client - the client side has been hosted using Netlify hosting place, https://alpha-trade.netlify.app/ .
-- **Server - the server side has been deployed using render, https://alpha-trade.onrender.com/
+- **Client** - the client side has been hosted using Netlify hosting place, https://alpha-trade.netlify.app/ .
+- **Server** - the server side has been deployed using render, https://alpha-trade.onrender.com/
  
 
 ## Installation
