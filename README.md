@@ -25,6 +25,12 @@ Alpha Trade is a web application designed to provide users with historical data 
 - **Data Fetching**: Fetches commodity data from the Alpha Vantage API for accurate historical pricing information.
 - **Runtime Environment**: Runs on Node.js for server-side execution and JavaScript runtime.
 
+  ## Deployment
+
+- **Client - the client side has been hosted using Netlify hosting place, https://alpha-trade.netlify.app/ .
+- **Server - the server side has been deployed using render, https://alpha-trade.onrender.com/
+ 
+
 ## Installation
 
 1. Clone the repository from https://github.com/wellingtonmwadali/alpha_trade.
