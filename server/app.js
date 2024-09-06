@@ -8,13 +8,13 @@ const naturalGas = require('./routes/gas');
 const brent = require('./routes/brent');
 const copper = require('./routes/copper');
 const aluminium = require('./routes/aluminium');
-const news = require('./routes/news');
+const news = require('./routes/news');cd 
 
 
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 const MONGODB_URL = process.env.MONGODB_URL;
 
 // cors
@@ -40,7 +40,7 @@ app.use('/api', news);
 
 
 // Connect to MongoDB
-mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB_URL);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
@@ -49,23 +49,12 @@ db.once('open', () => {
 
 // Schema
 // Destructure Schema and ObjectId from mongoose
-const { Schema, ObjectId } = mongoose;
 
 // Define the schema
-const userSchema = new Schema({
-  id: { type: ObjectId, required: true },
-  firstName: String,
-  lastName: String,
-  email: {
-    type: String,
-    unique: true,
-    required: true
-  }
-});
-
+const userModel = require('./models/User')
 // Model
-const userModel = mongoose.model('user', userSchema);
 
+// const userModel = mongoose.model('user', userSchema);
 // Newsletter Subscription Schema
 const newsletterSchema = mongoose.Schema({
   email: {
@@ -83,18 +72,22 @@ app.get('/', (req, res) => {
 
 // Signup API
 app.post('/signup', async (req, res) => {
-  console.log(req.body);
-  // Check if email is already in the database or new email
-  const { email } = req.body;
-
-  const result = await userModel.findOne({ email: email }).exec();
-  console.log(result);
-  if (result) {
-    res.send({ message: 'Email already registered', alert: false });
-  } else {
-    const data = userModel(req.body);
-    const save = await data.save();
-    res.send({ message: 'Signed up successfully', alert: true });
+  try {
+    console.log(req.body);
+    // Check if email is already in the database or new email
+    const { email } = req.body;
+  
+    const result = await userModel.findOne({ email: email }).exec();
+    console.log(result);
+    if (result) {
+      res.send({ message: 'Email already registered', alert: false });
+    } else {
+      const data = userModel(req.body);
+      const save = await data.save();
+      res.send({ message: 'Signed up successfully', alert: true });
+    }
+  } catch (err) {
+    console.log(error)
   }
 });
 
